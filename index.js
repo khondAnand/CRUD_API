@@ -30,6 +30,8 @@ const ProductModel = mongoose.model('Product', ProductSchema);
 
 
 
+// in the below route we get a particular product.
+
 app.get('/product/:id', (req, res) => {
 
     const PdtId = req.params.id;
@@ -44,6 +46,7 @@ app.get('/product/:id', (req, res) => {
 
 })
 
+// in the below route we get all the products.
 
 app.get('/AllProducts', (req, res) => {
 
@@ -58,9 +61,12 @@ app.get('/AllProducts', (req, res) => {
 
 })
 
-app.post('/createProduct', async (req, res) => {
 
-    // console.log(req);
+// this route is to create/add new product to db.
+
+app.post('/createProduct',  (req, res) => {
+
+   
 
 
 
@@ -89,7 +95,10 @@ app.post('/createProduct', async (req, res) => {
 
 });
 
-app.put('/update/:id', async (req, res) => {
+
+// this is to update particular product.
+
+app.put('/update/:id',  (req, res) => {
 
     const UpdateId = req.params.id;
     const UpDateName = req.body.name;
@@ -109,8 +118,11 @@ app.put('/update/:id', async (req, res) => {
     })
 })
 
+
+// this is to delete a particular product.
+
 app.delete('/delete/:id', (req, res) => {
-    // console.log(req.params);
+   
 
     const id = req.params.id;
     ProductModel.findOneAndDelete(({ ProductId: id }), (err, data) => {
